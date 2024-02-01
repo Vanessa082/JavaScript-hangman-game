@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Hangman game with canvas animation</title>
-    <link rel="stylesheet" href="assets/style/style.css">
-</head>
-<body>
-    <h1>HANGMAN</h1>
-    <h2>VANILLA JAVASCRIPT HANGMAN GAME</h2>
-    <p>Use the alphabet below to guess the word, or click hint to get a clue.</p>
-    <div class="alphabet"></div>
-    <span>The chosen category is <span id="category"></span></span>
-    <div class="input"></div>
-    <h3 class="numberOfLives"></h3>
-    
-    <script src="script.js"></script>
-</body>
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <img src="assets/image/images.png" alt="logo" />
+    <div class="container">
+      <h2>VANILLA JAVASCRIPT HANGMAN GAME</h2>
+      <p>
+        Use the alphabet below to guess the word, or click hint to get a clue.
+      </p>
+
+      <div class="alphabets"></div>
+
+      <span>The chosen category is <span id="category"></span></span>
+
+      <div class="input"></div>
+      <h3 class="numberOfLives"></h3>
+      <span id="clue">Clue </span>
+
+      <canvas id="myCanvas" width="200" height="100"></canvas>
+
+      <div class="buttons">
+        <button id="hint">Hint</button>
+        <button id="reset">
+          <span class="material-symbols-outlined"> restart_alt </span>
+        </button>
+      </div>
+    </div>
+
+    <script src="./assets/scripts/index.js" type="module"></script>
+  </body>
 </html>
