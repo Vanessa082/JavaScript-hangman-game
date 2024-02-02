@@ -1,36 +1,50 @@
 import { ALPHABETS } from './constants.js';
-import QUESTIONS from '../data/questions.json' assert { type: 'json' }  // this is how json files are parsed to js objects when importing.
-
-(async () => {
-    console.log('1) hello');
-
-    await new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('hello van')
-            // resolve();
-        }, 3000);
-    });
-
-    console.log('hello');
-})();
-
-console.log("i'm outside")
+import { displayWords, displayChances } from './utils.js';
+import EXERCISES from '../data/exercises.json' assert { type: 'json' }  // this is how json files are parsed to js objects when importing.
 
 const alphabetContainer = document.querySelector('.alphabets');
 const category = document.getElementById('category');
-const input = document.querySelector('.input');
-const numberOfLives = document.querySelector('.numberOfLives');
 const myCanvas = document.querySelector('.myCanvas');
 const hint = document.getElementById('hint');
 const reset = document.getElementById('reset');
+
+let current_exe_indx = 0;
+let current_exercise = EXERCISES[current_exe_indx];
+let selected_letters = [];
+
+const loadNextExercise = () => {
+    if (current_exe_indx < EXERCISES.length) {
+        current_exe_indx++;
+        current_exercise = EXERCISES[current_exe_indx];
+
+        selected_letters = [];
+        displayExercise();
+    };
+};
+
+const displayExercise = () => {
+    if (current_exercise) {
+        category.innerHTML = current_exercise.category;
+
+        displayWords(current_exercise.word, selected_letters);
+    };
+};
 
 ALPHABETS.forEach((letter) => {
     const btn = document.createElement('button');
     btn.innerHTML = letter;
 
-    btn.addEventListener('click', (e) => {
-        //
+    btn.addEventListener('click', () => {
+        selected_letters.push(letter);
+
+        displayChances(selected_letters)
+        console.log(selected_letters)
+        btn.disabled = true;
+ 
+        displayExercise()
     });
 
     alphabetContainer.appendChild(btn);
-})
+});
+
+displayExercise();
