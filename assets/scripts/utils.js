@@ -21,8 +21,15 @@ export const displayChances = (selected_letters = []) => {
     const left = MAX_CHANCES - selected_letters.length;
 
     if (left > 0) {
-        numberOfLives.innerHTML = left;
+        numberOfLives.innerHTML = 
+        "you have " + left  + " chance left";
     } else {
-        numberOfLives.innerHTML = 'u lost';
+        numberOfLives.innerHTML = 'Game Over!';
+    };
+
+    for(let i = 0; i < selected_letters.length; i++){
+        if(selected_letters.includes + MAX_CHANCES === selected_letters.length){
+            numberOfLives.innerHTML = "You Win";
+        }
     }
 };
