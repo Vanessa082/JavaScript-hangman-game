@@ -20,5 +20,9 @@ export const displayWords = (word = '', selected_letters = []) => {
 export const displayChances = (selected_letters = []) => {
     const left = MAX_CHANCES - selected_letters.length;
 
-    numberOfLives.innerHTML = left;
+    if (left > 0) {
+        numberOfLives.innerHTML = left;
+    } else {
+        numberOfLives.innerHTML = 'u lost';
+    }
 };

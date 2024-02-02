@@ -47,4 +47,9 @@ ALPHABETS.forEach((letter) => {
     alphabetContainer.appendChild(btn);
 });
 
+hint.addEventListener('click', () => {
+    const clue = document.querySelector('#clue span');
+    clue.innerHTML = current_exercise.clue;
+});
+
 displayExercise();
