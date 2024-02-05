@@ -34,13 +34,12 @@ ALPHABETS.forEach((letter) => {
     btn.innerHTML = letter;
 
     btn.addEventListener('click', () => {
-        if (MAX_CHANCES - selected_letters.length <= 0) return;
+        if (selected_letters.includes(letter)) return;
 
         selected_letters.push(letter);
 
-        displayChances(selected_letters);
+        displayChances(selected_letters, current_exercise);
         console.log(selected_letters);
-        btn.disabled = true;
 
         displayExercise();
     });

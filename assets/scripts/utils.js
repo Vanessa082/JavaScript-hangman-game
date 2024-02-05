@@ -17,13 +17,13 @@ export const displayWords = (word = '', selected_letters = []) => {
     }
 };
 
-export const displayChances = (selected_letters = []) => {
+export const displayChances = (selected_letters = [], current_exercise) => {
   let wrongGuesses = 0;
   let remainingChances = MAX_CHANCES;
   
   for (let i = 0; i < selected_letters.length; i++) {
-    const selectedLetter = selected_letters[i];
-    const foundIndex = current_exercise.word.toUpperCase().indexOf(selectedLetter);
+    const letter = selected_letters[i];
+    const foundIndex = current_exercise.word.toUpperCase().indexOf(letter);
 
     if (foundIndex >= 0) {
       
