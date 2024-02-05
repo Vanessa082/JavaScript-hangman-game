@@ -1,5 +1,5 @@
-import { MAX_CHANCES } from "./constants.js";
 
+import { MAX_CHANCES } from "./constants.js";
 const wordsDisplay = document.querySelector('.words-display');
 const numberOfLives = document.querySelector('.numberOfLives');
 
@@ -18,18 +18,28 @@ export const displayWords = (word = '', selected_letters = []) => {
 };
 
 export const displayChances = (selected_letters = []) => {
-    const left = MAX_CHANCES - selected_letters.length;
+  let wrongGuesses = 0;
+  let remainingChances = MAX_CHANCES;
+  
+  for (let i = 0; i < selected_letters.length; i++) {
+    const selectedLetter = selected_letters[i];
+    const foundIndex = current_exercise.word.toUpperCase().indexOf(selectedLetter);
 
-    if (left > 0) {
-        numberOfLives.innerHTML = 
-        "you have " + left  + " chance left";
+    if (foundIndex >= 0) {
+      
+      displayWords(current_exercise.word, selected_letters);
     } else {
+      
+      wrongGuesses++;
+      remainingChances--;
+      if (remainingChances <= 0) {
         numberOfLives.innerHTML = 'Game Over!';
-    };
-
-    for(let i = 0; i < selected_letters.length; i++){
-        if(selected_letters.includes + MAX_CHANCES === selected_letters.length){
-            numberOfLives.innerHTML = "You Win";
-        }
+      } else {
+        numberOfLives.innerHTML = `you have ${remainingChances} chance left`;
+      }
     }
+  }
+  if (wrongGuesses === 0) {
+    displayWords(current_exercise.word, selected_letters);
+  }
 };
